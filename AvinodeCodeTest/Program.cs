@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace AvinodeCodeTest
 {
@@ -6,7 +7,8 @@ namespace AvinodeCodeTest
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            string path = "C:/Users/Chuck/Downloads/Wyvern Menu.txt";
+            Console.WriteLine(File.ReadAllText(path));
             Console.Read();
         }
     }
