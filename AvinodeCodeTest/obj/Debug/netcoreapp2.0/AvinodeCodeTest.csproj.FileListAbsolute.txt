@@ -1,0 +1,11 @@
+C:\Users\Chuck\source\repos\AvinodeCodeTest\AvinodeCodeTest\bin\Debug\netcoreapp2.0\AvinodeCodeTest.deps.json
+C:\Users\Chuck\source\repos\AvinodeCodeTest\AvinodeCodeTest\bin\Debug\netcoreapp2.0\AvinodeCodeTest.runtimeconfig.json
+C:\Users\Chuck\source\repos\AvinodeCodeTest\AvinodeCodeTest\bin\Debug\netcoreapp2.0\AvinodeCodeTest.runtimeconfig.dev.json
+C:\Users\Chuck\source\repos\AvinodeCodeTest\AvinodeCodeTest\bin\Debug\netcoreapp2.0\AvinodeCodeTest.dll
+C:\Users\Chuck\source\repos\AvinodeCodeTest\AvinodeCodeTest\bin\Debug\netcoreapp2.0\AvinodeCodeTest.pdb
+C:\Users\Chuck\source\repos\AvinodeCodeTest\AvinodeCodeTest\obj\Debug\netcoreapp2.0\AvinodeCodeTest.csprojResolveAssemblyReference.cache
+C:\Users\Chuck\source\repos\AvinodeCodeTest\AvinodeCodeTest\obj\Debug\netcoreapp2.0\AvinodeCodeTest.csproj.CoreCompileInputs.cache
+C:\Users\Chuck\source\repos\AvinodeCodeTest\AvinodeCodeTest\obj\Debug\netcoreapp2.0\AvinodeCodeTest.AssemblyInfoInputs.cache
+C:\Users\Chuck\source\repos\AvinodeCodeTest\AvinodeCodeTest\obj\Debug\netcoreapp2.0\AvinodeCodeTest.AssemblyInfo.cs
+C:\Users\Chuck\source\repos\AvinodeCodeTest\AvinodeCodeTest\obj\Debug\netcoreapp2.0\AvinodeCodeTest.dll
+C:\Users\Chuck\source\repos\AvinodeCodeTest\AvinodeCodeTest\obj\Debug\netcoreapp2.0\AvinodeCodeTest.pdb
