@@ -10,7 +10,7 @@ namespace AvinodeCodeTest
         static void Main(string[] args)
         {
             //Get XML Data from file and put it into strig
-            string path = "C:/Users/Chuck/Downloads/Wyvern Menu.txt";
+            string path = "C:/Users/Chuck/Downloads/SchedAero Menu.txt";
             string xmlString = File.ReadAllText(path);
 
             //Initialize reader with which to parse xml string
@@ -27,7 +27,7 @@ namespace AvinodeCodeTest
                         string menuName = reader.ReadElementContentAsString();
                         //Finds path and gets value of path from attributes list
                         reader.ReadToFollowing("path");
-                        reader.MoveToFirstAttribute();
+                        reader.MoveToAttribute("value");
                         string menuPath = reader.Value;
                         Console.WriteLine(menuName + ", " + menuPath);
                     }
