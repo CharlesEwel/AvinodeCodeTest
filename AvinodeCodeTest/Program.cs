@@ -16,11 +16,10 @@ namespace AvinodeCodeTest
             //Initialize reader with which to parse xml string
             using (XmlReader reader = XmlReader.Create(new StringReader(xmlString)))
             {
-                while(reader.Read())
+                while (reader.Read())
                 {
-                    //Gets menu name
-                    reader.ReadToFollowing("displayName");
-                    //without nnelow if-statement the program hits a bug once it finishes the xml file
+                    reader.ReadToFollowing("item");
+                    reader.ReadToDescendant("displayName");
                     if (reader.NodeType == XmlNodeType.Element)
                     {
                         //Gets menu name from inside element
@@ -31,6 +30,7 @@ namespace AvinodeCodeTest
                         string menuPath = reader.Value;
                         Console.WriteLine(menuName + ", " + menuPath);
                     }
+
                 }
             }
             Console.Read();
