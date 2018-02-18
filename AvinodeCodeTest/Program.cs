@@ -18,36 +18,14 @@ namespace AvinodeCodeTest
             {
                 while (reader.Read())
                 {
-                    reader.ReadToFollowing("item");
-                    reader.ReadToDescendant("displayName");
-                    if (reader.NodeType == XmlNodeType.Element)
-                    {
-                        //Gets menu name from inside element
-                        string menuName = reader.ReadElementContentAsString();
-                        //Finds path and gets value of path from attributes list
-                        reader.ReadToFollowing("path");
-                        reader.MoveToAttribute("value");
-                        string menuPath = reader.Value;
-                        Console.WriteLine(menuName + ", " + menuPath);
-                    }
+                    parseItem(reader, "");
                     reader.ReadToNextSibling("subMenu");
                     if (reader.NodeType == XmlNodeType.Element)
                     {
                         XmlReader subMenu = reader.ReadSubtree();
                         while(subMenu.Read())
                         {
-                            subMenu.ReadToFollowing("item");
-                            subMenu.ReadToDescendant("displayName");
-                            if (subMenu.NodeType == XmlNodeType.Element)
-                            {
-                                //Gets menu name from inside element
-                                string menuName = subMenu.ReadElementContentAsString();
-                                //Finds path and gets value of path from attributes list
-                                subMenu.ReadToFollowing("path");
-                                subMenu.MoveToAttribute("value");
-                                string menuPath = subMenu.Value;
-                                Console.WriteLine("    "+menuName + ", " + menuPath);
-                            }
+                            parseItem(subMenu, "    ");
                         }
                     }
                 }
@@ -55,5 +33,20 @@ namespace AvinodeCodeTest
             Console.Read();
         }
 
+        public static void parseItem(XmlReader rdr, string identation)
+        {
+            rdr.ReadToFollowing("item");
+            rdr.ReadToDescendant("displayName");
+            if (rdr.NodeType == XmlNodeType.Element)
+            {
+                //Gets menu name from inside element
+                string menuName = rdr.ReadElementContentAsString();
+                //Finds path and gets value of path from attributes list
+                rdr.ReadToFollowing("path");
+                rdr.MoveToAttribute("value");
+                string menuPath = rdr.Value;
+                Console.WriteLine(identation + menuName + ", " + menuPath);
+            }
+        }
     }
 }
