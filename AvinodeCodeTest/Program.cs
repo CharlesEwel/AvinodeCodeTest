@@ -11,8 +11,8 @@ namespace AvinodeCodeTest
         static void Main(string[] args)
         {
             //Get XML Data from file and put it into strig
-            string path = "C:/Users/Chuck/Downloads/SchedAero Menu.txt";
-            string active = "/Requests/OpenQuotes.aspx";
+            string path = args[0];
+            string active = args[1];
             string xmlString = File.ReadAllText(path);
 
             //Initialize reader with which to parse xml string
