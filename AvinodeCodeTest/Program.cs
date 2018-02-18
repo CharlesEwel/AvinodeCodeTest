@@ -33,15 +33,15 @@ namespace AvinodeCodeTest
                             
                             if (childMenu != null)
                             {
-                                //tells the program to put 'ACTIVE' next to the parent menu
-                                //if this given child menu is a match for our active parameter
-                                if (childMenu.Substring(Math.Max(0, childMenu.Length - 5)) == "ACTIVE") activeParent = true;
+                                //tells the program to put 'ACTIVE' next to the parent menu if this given child menu is a match for our active parameter
+                                if (childMenu.Substring(Math.Max(0, childMenu.Length - 6)) == "ACTIVE") activeParent = true;
                                 //pushes child menu displayName and path to our array
                                 childMenus.Add(childMenu);
                             }
                                 
                         }
                     }
+                    if (parentMenu!=null && parentMenu.Substring(Math.Max(0, parentMenu.Length - 6)) != "ACTIVE" && activeParent) parentMenu = parentMenu + " ACTIVE";
                     Console.WriteLine(parentMenu);
                     foreach (string childMenu in childMenus)
                     {
