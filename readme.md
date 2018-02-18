@@ -1,28 +1,31 @@
 # Title - Avinode Coding Exercise
 
 #### Short Description
-A site where users can upload restaurants and write reviews for them. Restaurants can be filtered by cuisine type and sorted by average rating. Users may 'log-in' and set custom view preferences.
+A console application that takes an xml document, and a string representing an active path name, and returns a menu, with the active menu marked as such.
 
 #### Author
 Charles Ewel
 
-## Description
-
-A basic project template for C# webapps using Nancy/Razor, XUnit, and MSSQL.
-
 ## Technologies Used
 
+* .NET
 * C#
-* Nancy and Razor View Engines
-* XUnit
-* MSSQL
 
 ## Instructions
 
-* Clone the repository
+* Clone the repository or download it from github
 * In powershell, navigate to the project directory
-* In powershell, enter '>dnu restore' and then '>dnx kestrel'.
-* Navigate your web browser to http://localhost:5004
+* Type: .\AvinodeCodeTest.exe [xml file location] [active path name] and hit enter
+
+Where [xml file location] is the location of the xml file on your computer. There is a copy of "SchedAero Menu.txt" and "Wyvern Menu.txt" in the project directory, so relative pathing can be used to reference those or absolute pathing can be used to reference xml elsewhere on the computer. [active path name] should be the name of the path that you want to display as active in the menu. Both [xml file location] and [active path name] should be in quotes.
+
+Example:
+
+Running (from the project directory),
+
+.\AvinodeCodeTest.exe ".\SchedAero Menu.txt" "/Requests/OpenQuotes.aspx"
+
+will return a menu with the open quotes option set as active.
 
 ## Known Bugs
 
@@ -31,9 +34,3 @@ None
 ## Contacts
 
 Charles.Ewel@gmail.com
-
-### License
-
-Licensed under the MIT License.
-
-&copy;

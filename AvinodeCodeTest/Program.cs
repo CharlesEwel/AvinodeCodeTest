@@ -8,6 +8,7 @@ namespace AvinodeCodeTest
 {
     class Program
     {
+        //This is our program which takes the xml and makes it into a menu. It accepts two arguments corresponding to the location of the xml file and the path which we would like to see marked as active
         static void Main(string[] args)
         {
             //Get XML Data from file and put it into strig
@@ -29,6 +30,7 @@ namespace AvinodeCodeTest
                     List<string> childMenus = new List<string>();
                     if (reader.NodeType == XmlNodeType.Element)
                     {
+                        //This reader will read through the items in the submenu and finish when the submenu ends
                         XmlReader subMenu = reader.ReadSubtree();
                         while(subMenu.Read())
                         {
@@ -50,10 +52,12 @@ namespace AvinodeCodeTest
                     Console.WriteLine(parentMenu);
                     foreach (string childMenu in childMenus)
                     {
+                        //prints the child menu with identation
                         Console.WriteLine("        "+childMenu);
                     }
                 }
             }
+            //Added this to keep the menu on screen once the program finishes running
             Console.Read();
         }
 
