@@ -11,6 +11,7 @@ namespace AvinodeCodeTest
         {
             //Get XML Data from file and put it into strig
             string path = "C:/Users/Chuck/Downloads/SchedAero Menu.txt";
+            string active = "/Requests/OpenQuotes.aspx";
             string xmlString = File.ReadAllText(path);
 
             //Initialize reader with which to parse xml string
@@ -18,14 +19,14 @@ namespace AvinodeCodeTest
             {
                 while (reader.Read())
                 {
-                    parseItem(reader, "");
+                    parseItem(reader, "", active);
                     reader.ReadToNextSibling("subMenu");
                     if (reader.NodeType == XmlNodeType.Element)
                     {
                         XmlReader subMenu = reader.ReadSubtree();
                         while(subMenu.Read())
                         {
-                            parseItem(subMenu, "    ");
+                            parseItem(subMenu, "    ", active);
                         }
                     }
                 }
@@ -33,7 +34,7 @@ namespace AvinodeCodeTest
             Console.Read();
         }
 
-        public static void parseItem(XmlReader rdr, string identation)
+        public static void parseItem(XmlReader rdr, string identation, string activePath)
         {
             rdr.ReadToFollowing("item");
             rdr.ReadToDescendant("displayName");
@@ -45,7 +46,11 @@ namespace AvinodeCodeTest
                 rdr.ReadToFollowing("path");
                 rdr.MoveToAttribute("value");
                 string menuPath = rdr.Value;
-                Console.WriteLine(identation + menuName + ", " + menuPath);
+                if(menuPath == activePath)
+                {
+                    Console.WriteLine(identation + menuName + ", " + menuPath + " ACTIVE");
+                } else Console.WriteLine(identation + menuName + ", " + menuPath);
+
             }
         }
     }
