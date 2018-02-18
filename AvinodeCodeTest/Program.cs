@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml;
@@ -20,16 +21,31 @@ namespace AvinodeCodeTest
                 while (reader.Read())
                 {
                     string parentMenu = parseItem(reader, "", active);
-                    Console.WriteLine(parentMenu);
                     reader.ReadToNextSibling("subMenu");
+                    bool activeParent = false;
+                    List<string> childMenus = new List<string>();
                     if (reader.NodeType == XmlNodeType.Element)
                     {
                         XmlReader subMenu = reader.ReadSubtree();
                         while(subMenu.Read())
                         {
                             string childMenu = parseItem(subMenu, "    ", active);
-                            if(childMenu != null) Console.WriteLine(childMenu);
+                            
+                            if (childMenu != null)
+                            {
+                                //tells the program to put 'ACTIVE' next to the parent menu
+                                //if this given child menu is a match for our active parameter
+                                if (childMenu.Substring(Math.Max(0, childMenu.Length - 5)) == "ACTIVE") activeParent = true;
+                                //pushes child menu displayName and path to our array
+                                childMenus.Add(childMenu);
+                            }
+                                
                         }
+                    }
+                    Console.WriteLine(parentMenu);
+                    foreach (string childMenu in childMenus)
+                    {
+                        Console.WriteLine(childMenu);
                     }
                 }
             }
