@@ -30,10 +30,30 @@ namespace AvinodeCodeTest
                         string menuPath = reader.Value;
                         Console.WriteLine(menuName + ", " + menuPath);
                     }
-
+                    reader.ReadToNextSibling("subMenu");
+                    if (reader.NodeType == XmlNodeType.Element)
+                    {
+                        XmlReader subMenu = reader.ReadSubtree();
+                        while(subMenu.Read())
+                        {
+                            subMenu.ReadToFollowing("item");
+                            subMenu.ReadToDescendant("displayName");
+                            if (subMenu.NodeType == XmlNodeType.Element)
+                            {
+                                //Gets menu name from inside element
+                                string menuName = subMenu.ReadElementContentAsString();
+                                //Finds path and gets value of path from attributes list
+                                subMenu.ReadToFollowing("path");
+                                subMenu.MoveToAttribute("value");
+                                string menuPath = subMenu.Value;
+                                Console.WriteLine("    "+menuName + ", " + menuPath);
+                            }
+                        }
+                    }
                 }
             }
             Console.Read();
         }
+
     }
 }
