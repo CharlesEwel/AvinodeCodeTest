@@ -19,14 +19,16 @@ namespace AvinodeCodeTest
             {
                 while (reader.Read())
                 {
-                    parseItem(reader, "", active);
+                    string parentMenu = parseItem(reader, "", active);
+                    Console.WriteLine(parentMenu);
                     reader.ReadToNextSibling("subMenu");
                     if (reader.NodeType == XmlNodeType.Element)
                     {
                         XmlReader subMenu = reader.ReadSubtree();
                         while(subMenu.Read())
                         {
-                            parseItem(subMenu, "    ", active);
+                            string childMenu = parseItem(subMenu, "    ", active);
+                            if(childMenu != null) Console.WriteLine(childMenu);
                         }
                     }
                 }
@@ -34,7 +36,7 @@ namespace AvinodeCodeTest
             Console.Read();
         }
 
-        public static void parseItem(XmlReader rdr, string identation, string activePath)
+        public static string parseItem(XmlReader rdr, string identation, string activePath)
         {
             rdr.ReadToFollowing("item");
             rdr.ReadToDescendant("displayName");
@@ -46,12 +48,14 @@ namespace AvinodeCodeTest
                 rdr.ReadToFollowing("path");
                 rdr.MoveToAttribute("value");
                 string menuPath = rdr.Value;
-                if(menuPath == activePath)
+                if (menuPath == activePath)
                 {
-                    Console.WriteLine(identation + menuName + ", " + menuPath + " ACTIVE");
-                } else Console.WriteLine(identation + menuName + ", " + menuPath);
+                    return identation + menuName + ", " + menuPath + " ACTIVE";
+                }
+                else return identation + menuName + ", " + menuPath;
 
             }
+            else return null;
         }
     }
 }
