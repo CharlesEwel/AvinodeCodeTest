@@ -28,6 +28,7 @@ namespace AvinodeCodeTest
                     //Next we look to see if there is a submenu, and prepare to access it if so
                     reader.ReadToNextSibling("subMenu");
                     List<string> childMenus = new List<string>();
+                    Dictionary<string, List<string>> childSubMenus = new Dictionary<string, List<string>>{ };
                     if (reader.NodeType == XmlNodeType.Element)
                     {
                         //This reader will read through the items in the submenu and finish when the submenu ends
@@ -38,6 +39,28 @@ namespace AvinodeCodeTest
                             
                             if (childMenu != null)
                             {
+                                bool activeChild = false;
+                                List<string> subChildMenus = new List<string>();
+                                //Next we look to see if there is a submenu within the current submenu, and prepare to access it if so
+                                subMenu.ReadToNextSibling("subMenu");
+                                if (reader.NodeType == XmlNodeType.Element)
+                                {
+                                    XmlReader subSubMenu = subMenu.ReadSubtree();
+                                    while (subSubMenu.Read())
+                                    {
+                                        string subChildMenu = parseItem(subSubMenu, active);
+                                        if (subChildMenu != null)
+                                        {
+                                            //tells the program to put 'ACTIVE' next to the parent menu if this given child menu is a match for our active parameter
+                                            if (subChildMenu.Substring(Math.Max(0, subChildMenu.Length - 6)) == "ACTIVE") activeChild = true;
+                                            //pushes child menu displayName and path to our array
+                                            subChildMenus.Add(subChildMenu);
+                                        }
+
+                                    }
+                                }
+                                if (childMenu != null && childMenu.Substring(Math.Max(0, childMenu.Length - 6)) != "ACTIVE" && activeChild) childMenu = childMenu + " ACTIVE";
+                                childSubMenus.Add(childMenu, subChildMenus);
                                 //tells the program to put 'ACTIVE' next to the parent menu if this given child menu is a match for our active parameter
                                 if (childMenu.Substring(Math.Max(0, childMenu.Length - 6)) == "ACTIVE") activeParent = true;
                                 //pushes child menu displayName and path to our array
@@ -54,6 +77,11 @@ namespace AvinodeCodeTest
                     {
                         //prints the child menu with identation
                         Console.WriteLine("        "+childMenu);
+                        foreach (string subChildMenu in childSubMenus[childMenu])
+                        {
+                            //prints the child menu with identation
+                            Console.WriteLine("        " + "        " + subChildMenu);
+                        }
                     }
                 }
             }

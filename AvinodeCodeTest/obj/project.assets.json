@@ -1376,11 +1376,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Chuck\\source\\repos\\AvinodeCodeTest\\AvinodeCodeTest\\AvinodeCodeTest.csproj",
+      "projectUniqueName": "C:\\users\\Chuck\\source\\repos\\AvinodeCodeTest\\AvinodeCodeTest\\AvinodeCodeTest.csproj",
       "projectName": "AvinodeCodeTest",
-      "projectPath": "C:\\Users\\Chuck\\source\\repos\\AvinodeCodeTest\\AvinodeCodeTest\\AvinodeCodeTest.csproj",
+      "projectPath": "C:\\users\\Chuck\\source\\repos\\AvinodeCodeTest\\AvinodeCodeTest\\AvinodeCodeTest.csproj",
       "packagesPath": "C:\\Users\\Chuck\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Chuck\\source\\repos\\AvinodeCodeTest\\AvinodeCodeTest\\obj\\",
+      "outputPath": "C:\\users\\Chuck\\source\\repos\\AvinodeCodeTest\\AvinodeCodeTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
